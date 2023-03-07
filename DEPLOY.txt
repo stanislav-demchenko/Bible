@@ -1,0 +1,43 @@
+
+If it is your first deploy read INSTALL.txt for instructions.
+
+Before deploy check the site, commit and only then deploy. [or code can be lost during copying to remote server, for example, messed up with tabs FTP and files]
+
+`header.php` checks for file `deployment_flag.txt` and if it exists script warns visitors about maintenance work on the site.
+It is not a flag variable in the config, because flag can be forgotten. Flag file - you will see.
+
+During deploying watch changes at `git status` [in saved file] and copy these files to the server [if you didn't commit yet].
+Use `git add .` and deploy.
+
+Files in caps [Caps Lock] must not go to the web server.
+
+Be sure that you updated `config.php` on remote server if it was changed [This file is untracked, for repository there is `config.sample.php`, which must not be copied to web server files].
+
+You can warn users about maintenance work.
+
+Be sure that new tables are created on the remote database server.
+
+Check changes before deploy. Check the site after deploy. Is it working?
+
+Current server is on free [!] hosting, so, it is not so fast and sometimes web server gives its "500"... And speed of copying is not much, cause project is on Free account [FTP and Web].
+
+But "we" PoRT [or me =] are grateful, cause it is not easy to find good free hosting with PHP and SQL.
+http://hostinger.co.uk/
+
+If countries ad languages updated and you need list of Bibles for all countries execute this query:
+`
+select distinct country, language, b_code, link, length(link) `length` from
+(
+select country, language, b_code, 
+concat("'#Bible for #", REPLACE(country, ' ', ''), " in #", REPLACE(REPLACE(language, ' ', ''), ',', ''), ": http://gold-bible.16mb.com/?b_code=", b_code,"&country=", replace(case when iml.country_code is null then b_shelf.country else iml.country_code end, ' ', '%20') ,"&language=", REPLACE(REPLACE(case when imlang.iso_language_code is null then b_shelf.language else imlang.iso_language_code end, ' ', '%20'), ',', '%2C'),"',")  `link`
+    from b_shelf
+join iso_ms_languages iml on iml.country_name = b_shelf.country
+join iso_ms_languages imlang on imlang.language_name = b_shelf.language
+union
+select iso_ms_languages.country_name `country`, iso_ms_languages.language_name `language`, b_shelf.b_code, concat("'#Bible for #", REPLACE(iso_ms_languages.country_name, ' ', ''), " in #", REPLACE(REPLACE(iso_ms_languages.language_name, ' ', ''), ',', ''), ": http://gold-bible.16mb.com/?b_code=", b_code,"&country=", iso_ms_languages.country_code ,"&language=", iso_ms_languages.iso_language_code, "',")  `link`
+    from iso_ms_languages
+join b_shelf on iso_ms_languages.language_name = b_shelf.language
+where language_name in (select distinct language from b_shelf)
+) t
+order by country desc, language, b_code
+`

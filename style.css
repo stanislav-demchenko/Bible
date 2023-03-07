@@ -1,0 +1,14 @@
+a:hover, a:link, a:visited, a:hover 
+{
+	text-decoration: none;
+}
+
+.number
+{
+	font-size: 0.5em;
+}
+
+.panel-header > p 
+{
+	text-align: justify;
+}

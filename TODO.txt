@@ -1,0 +1,209 @@
+At 2nd April of 2017 
+Bible Site has no signed up users except me and test account.
+
+People visit site and leave.
+
+No one leaves feedback. Sign Up and Feedback Forms are working fine.
+
+
+Weekend's Deploy.
+
+Firstly, database deploy, then file deploying.
+
+TITLES TITLES! =]
+Download InScript Bibles to get tranlsations for book titles. Amen =]
+Some shall be translated manually as Portuguese, for example.
+prepared titles:
+
+	 + en
+	 + pt
+	 + es
+	 + ru
+	 + de
+	 + fr
+	 + zh
+	 el
+	 + ar
+
+
+-/+ Book titles in different languages, not an easy thing - VPLs are using books as three-letter abbreviation and it differs from translation to translation: somewhere Joel is JOE, in another place it can be JOL.
+	- Get other translations, insript and _html from eBible.org
+
++ Upload Timetables Promo Video.
+
+Add languages, finish downloading of external Bibles, add them too.
+
++ Open Reading of the Day when visitor just entered. 
+Hallelujah! Ladies and Gentlemen =] Bible Site opens today's book and chapter from daily reading timed to Holidays! Amen =]
+
++	Set book from Daily Reading after one hour without activity on a site from current user
+	+ test after one hour
+	+ for guest opens book and chapter from timetable
+	+ for signed in user opens book and chapter from timetable, after navigation on other pages site saves that book and chapter
+
+- Themes. Shall be easy.
+
+=======================
+Bible Reading Timetable
+=======================
+
+--------------
+Daily Readings
+--------------
+
+
++ Bible for a Year timed to Holidays, e.g. first chapters of Gospel at the end of December, last chapters at Easter.
+	[x] NEEDS official Christian timetables.
+
+Get Easter tests: ./tests/easter.php, easter2.php
+
+----------------------------------------------------
+|Christmas|January|...|Easter|...|November|December|
+----------------------------------------------------
+|Genesis -> Book before Matthew [usually Malachi]  |
+----------------------------------------------------
+|Gospels					 |Acts -> Revelation   |
+----------------------------------------------------
+
+Day before Christmas LUK 1
+
+Christmas day: first chapter of Matthew and Luke 2.
+
+Next days after Christmas next chapters and chapters from Mark and John.
+
+Good Friday: Matthew 27, Mark 15, Luke 22 23, John 18 19
+
+Easter: Matthew 28, Mark 16, Luke 24, John 20 21
+
+Next days after Easter Acts and next books.
+
++ And we have individuals on the Earth such as... ru - they have Christmas in January 7th...
+	All world celebrates Christmas in 25th December, except them.
+
+
+----------------
+Other Timetables
+----------------
+
++ schedule reading on the page of Bibles.
+
++ Bible has around 1189 chapters, which is three and quarter chapters per a day.
+
++ User timetables like: one chapter per a day, or one[few] chapter[s] per Saturday/Sunday.
+
+- two different types of timetables: timed to Holidays and not timed, warn about capacity: 8 chapters for a week.
+	
+for gospels - 89 chapters
+NT after gospels: 171 chapter - ~33 weeks
+OT - 929 chapters
+
+e.g. 3 chapters for each weekend day [Saturday - 3 chapters, Sunday - 3 chapters]:
+
+~89 chapters for a days from Christmas to Easter which is impossible with capacity of 72 chapters.
+so - minimum 8 chapters for a week. And in this case no reading except gospels between Christmas and Easter.
+
++ Timetable for Parallel Bibles.
+
+
+
+==================================
+John Hurt's Bibles [HTMLBible.com]
+==================================
+
+[!]
+When will be internet:
+change links for bibles to gold-bible.16mb.com/bibles/
+there must be many unpacked Bibles
+Run HTTrack to download rest of Bibles of John Hurt
+and upload them to ./bibles/
+Check which are not in ./bibles/, e.g. Dutch Bible.
+This is very need for Search Engines to make them think that Bibles are in gold-bible.16mb.com.
+[!]
+
+- Make redirect from HTML pages of "external" Bibles to the page of the Bible.
+
+=============
+Charity Links
+=============
+
+- Add social things for charity links in visitor's charity organizations list
+
+============
+Achievements
+============
+
+- Achievements for Bible reading, first chapter, first book, books, sets of books, Read All Bible. For last one "read twice", "...thrice" and so on.
+
+=================
+Top and Favorites
+=================
+
+- Select Favorite Verses [+], Chapters, Books, Bibles; delete from Favorites.
+
+- Show Top Verses[+], Chapter, Books and Bibles
+
+- Favorite Bible which will be opened after sign in.
+
+=============
+	QUIZ
+=============
+
+ Quiz with verses from chosen Bible where visitor must chose write what a word.
+
+
+============
+Social Stuff
+============
+
++ Unified verse displaying function: fix anchoring.
++	Parallel Bibles - another function.
+
+- Social things: for chapters, books and bibles. Share, tweet or copy link to the chapter, book or Bible.
+
++ for verse
+	- Like in VK
+
+facebook, VK - Share and Like buttons. Check. FB - waiting for ID check, VK - need phone number [for Like].
+Tweet button [not link?]
+
+
+========================
+Other Features and Fixes
+========================
+
+- Carousel of Features. "All Features"
+
+- Official Bible Site Blog
+
+- Embed a code for videos from LDS.org for especial chapters... e.g. Feeding of 5000.
+
++ Letter to mailbox after registration with pas.
+	- test
+
++ CAPTCHA, GD library for registration
+
+- Secure pas.
+
++ paged output for search
+
++ paged output for favorite and top verses.
+
+- Change the font for tilde? "ã"
+
+- Make .has-success .has-feedback etc things for controls during content checking.
+
+- ./?menu=users_profile&id=<?=$_SESSION['uid'];?>
+
+- clear verification code...
+
+- Reset Password!! Check on the hosting. [127.0.0.1 has no "sendmail"].
+
+- if $language contains "-" split it to $language and $country. Fix showing John Hurt's Bibles in this case.
+
+- Make Installation checker, script helper during installation which will say what system needs else.
+
+- Output page obfuscation - traffic economy and security reason. Function obfuscate with double spaces by one space and deleting `\r\n` and `\n`.
+
+- ID from characters [0123 5 78 a c efghijklmnopqrstuvwxyz] - 46bd and 9 - especially skipped.
+
+- comments for chapters - needs a lot of moderators to cut "bla..."...
